@@ -1,16 +1,11 @@
 namespace: jtdub
-name: requests_uri
-version: 0.0.1
+name: requests
+version: 0.0.3
 readme: README.md
 authors:
 - James Williams <james.williams@networktocode.com>
-description: your collection description
-license:
-- GPL-2.0-or-later
-license_file: ''
-tags: ['uri', 'requests', 'http', 'https']
+description: Module for interacting with HTTP services with the python requests library 
+tags: ['http', 'https', 'requests', 'uri']
 dependencies: {}
 repository: http://github.com/jtdub/requests-uri
 issues: https://github.com/jtdub/requests-uri/issues 
-build_ignore: []
-

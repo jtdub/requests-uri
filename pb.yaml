@@ -1,7 +1,7 @@
 - hosts: localhost
   tasks:
   - name: TEST REQUESTS_URI
-    requests_uri:
+    jtdub.requests_uri.requests_uri:
       url: https://bgpstuff.net/totals?format=json
       headers:
         Content-type: "applicatin/json"
@@ -11,7 +11,7 @@
       msg: "{{ bgpstuff }}"
 
   - name: TEST REQUESTS_URI
-    requests_uri:
+    jtdub.requests_uri.requests_uri:
       url: https://google.com
     register: google 
   - name: DEBUG RESPONSE
