@@ -1,0 +1,16 @@
+namespace: jtdub
+name: requests_uri
+version: 0.0.1
+readme: README.md
+authors:
+- James Williams <james.williams@networktocode.com>
+description: your collection description
+license:
+- GPL-2.0-or-later
+license_file: ''
+tags: ['uri', 'requests', 'http', 'https']
+dependencies: {}
+repository: http://github.com/jtdub/requests-uri
+issues: https://github.com/jtdub/requests-uri/issues 
+build_ignore: []
+

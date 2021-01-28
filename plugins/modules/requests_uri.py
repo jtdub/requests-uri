@@ -1,6 +1,9 @@
+"""
+Ansible Module that utilizes the python requests library
+"""
+
 import requests
-import json
-from ansible.module_utils.basic import *
+from ansible.module_utils.basic import AnsibleModule
 
 
 DOCUMENTATION = """
@@ -176,7 +179,8 @@ verify:
 """
 
 
-def main():
+def main():  # pylint: disable=too-many-locals
+    """requests-uri main function"""
     module = AnsibleModule(
         argument_spec=dict(
             method=dict(
@@ -210,7 +214,7 @@ def main():
     url = module.params["url"]
     params = module.params["params"]
     data = module.params["data"]
-    json = module.params["json"]
+    json = module.params["json"]  # pylint: disable=redefined-outer-name
     headers = module.params["headers"]
     cookies = module.params["cookies"]
     files = module.params["files"]
@@ -251,9 +255,9 @@ def main():
     if resp.ok:
         try:
             json = resp.json()
-        except:
+        except:  # pylint: disable=bare-except
             json = None
-            
+
         history = [{"status_code": x.status_code, "url": x.url} for x in resp.history]
         changed = bool(method in ["POST", "PUT", "PATCH", "DELETE"])
         module.exit_json(
@@ -278,7 +282,7 @@ def main():
             verify=verify,
         )
     else:
-        message = f"request failed with HTTP status code {resp.status_code} and error message {resp.text}"
+        message = f"request failed with HTTP status code {resp.status_code} and error message {resp.text}"  # pylint: disable=line-too-long
         module.fail_json(msg=message)
 
 
