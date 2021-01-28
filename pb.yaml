@@ -1,0 +1,19 @@
+- hosts: localhost
+  tasks:
+  - name: TEST REQUESTS_URI
+    requests_uri:
+      url: https://bgpstuff.net/totals?format=json
+      headers:
+        Content-type: "applicatin/json"
+    register: bgpstuff
+  - name: DEBUG RESPONSE
+    debug:
+      msg: "{{ bgpstuff }}"
+
+  - name: TEST REQUESTS_URI
+    requests_uri:
+      url: https://google.com
+    register: google 
+  - name: DEBUG RESPONSE
+    debug:
+      msg: "{{ google }}"
