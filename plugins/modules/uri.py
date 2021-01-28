@@ -8,7 +8,7 @@ from ansible.module_utils.basic import AnsibleModule
 
 DOCUMENTATION = """
 ---
-module: requests_uri
+module: jtdub.requests.uri
 short_description: Utilizes the python requests library to make HTTP calls to remote resources
 description:
     - This module utilizes the python requests library to make HTTP calls to remote resources.
@@ -108,10 +108,10 @@ options:
         default: null
 """
 EXAMPLES = """
-- requests_uri:
+- jtdub.requests.uri:
     method: GET
     url: https://google.com/
-- requests_uri:
+- jtdub.requests.uri:
     method: GET
     url: https://bgpstuff.net/totals?format=json
     headers:
