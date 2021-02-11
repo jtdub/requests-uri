@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
   steps:
-  - uses: arillso/action.ansible.collection@1.0.3
+  - name: deploy collection to ansible galaxy
+    uses: arillso/action.ansible.collection@master
     with:
       api_key: ${{ secrets.GALAXY_KEY }}
