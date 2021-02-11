@@ -2,6 +2,7 @@
 Ansible Module that utilizes the python requests library
 """
 
+import json
 import requests
 from ansible.module_utils.basic import AnsibleModule
 
@@ -214,7 +215,7 @@ def main():  # pylint: disable=too-many-locals
     url = module.params["url"]
     params = module.params["params"]
     data = module.params["data"]
-    json = module.params["json"]  # pylint: disable=redefined-outer-name
+    param_json = json.loads(module.params["json"]) if module.params["json"] else None
     headers = module.params["headers"]
     cookies = module.params["cookies"]
     files = module.params["files"]
@@ -239,7 +240,7 @@ def main():  # pylint: disable=too-many-locals
         url=url,
         params=params,
         data=data,
-        json=json,
+        json=param_json,
         headers=headers,
         cookies=cookies,
         files=files,
@@ -254,9 +255,9 @@ def main():  # pylint: disable=too-many-locals
 
     if resp.ok:
         try:
-            json = resp.json()
+            resp_json = resp.json()
         except:  # pylint: disable=bare-except
-            json = None
+            resp_json = None
 
         history = [{"status_code": x.status_code, "url": x.url} for x in resp.history]
         changed = bool(method in ["POST", "PUT", "PATCH", "DELETE"])
@@ -270,7 +271,7 @@ def main():  # pylint: disable=too-many-locals
             history=history,
             is_permanent_redirect=resp.is_permanent_redirect,
             is_redirect=resp.is_redirect,
-            json=json,
+            json=resp_json,
             links=resp.links,
             method=method,
             next=resp.next,
