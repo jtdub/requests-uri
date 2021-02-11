@@ -1,4 +1,18 @@
-- name: deploy collection to ansible galaxy
-  uses: arillso/action.ansible.collection@master
-  with:
-    api_key: ${{ secrets.GALAXY_KEY }}
+name: PUBLISH TO ANSIBLE GALAXY
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: deploy collection to ansible galaxy
+      uses: arillso/action.ansible.collection@master
+      with:
+        api_key: ${{ secrets.GALAXY_KEY }}
