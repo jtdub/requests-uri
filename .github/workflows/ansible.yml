@@ -6,12 +6,7 @@ on:
   pull_request:
     branches: [ master ]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-  steps:
-  - name: deploy collection to ansible galaxy
-    uses: arillso/action.ansible.collection@master
-    with:
-      api_key: ${{ secrets.GALAXY_KEY }}
+- name: deploy collection to ansible galaxy
+  uses: arillso/action.ansible.collection@master
+  with:
+    api_key: ${{ secrets.GALAXY_KEY }}
