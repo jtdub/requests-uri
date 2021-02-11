@@ -1,11 +1,3 @@
-name: PUBLISH TO ANSIBLE GALAXY
-
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
 - name: deploy collection to ansible galaxy
   uses: arillso/action.ansible.collection@master
   with:
