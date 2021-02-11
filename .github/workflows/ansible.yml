@@ -1,0 +1,16 @@
+name: PUBLISH TO ANSIBLE GALAXY
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+  steps:
+  - uses: arillso/action.ansible.collection@1.0.3
+    with:
+      api_key: ${{ secrets.GALAXY_KEY }}
