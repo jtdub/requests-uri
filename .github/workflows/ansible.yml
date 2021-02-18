@@ -13,6 +13,6 @@ jobs:
 
     steps:
     - name: deploy collection to ansible galaxy
-      uses: arillso/action.ansible.collection@master
+      uses: artis3n/ansible_galaxy_collection@v2 
       with:
         api_key: ${{ secrets.GALAXY_KEY }}
