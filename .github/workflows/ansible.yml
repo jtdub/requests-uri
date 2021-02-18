@@ -13,6 +13,7 @@ jobs:
 
     steps:
     - name: deploy collection to ansible galaxy
-      uses: arillso/action.ansible.collection@master
-      with:
-        api_key: ${{ secrets.GALAXY_KEY }}
+      run: |
+        ansible-galaxy collection build
+        FILE=$(ls *.tar.gz)
+        ansible-galaxy collection publish --token ${{ secrets.GALAXY_KEY }} $FILE
