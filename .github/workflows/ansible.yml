@@ -13,7 +13,6 @@ jobs:
 
     steps:
     - name: deploy collection to ansible galaxy
-      uses: actions/checkout@v2
       run: |
         ansible-galaxy collection build
         FILE=$(ls *.tar.gz)
