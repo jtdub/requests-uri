@@ -13,6 +13,8 @@ jobs:
 
     steps:
     - name: deploy collection to ansible galaxy
-      uses: artis3n/ansible_galaxy_collection@v2 
-      with:
-        api_key: ${{ secrets.GALAXY_KEY }}
+      uses: actions/checkout@v2
+      run: |
+        ansible-galaxy collection build
+        FILE=$(ls *.tar.gz)
+        ansible-galaxy collection publish --token ${{ secrets.GALAXY_KEY }} $FILE
